@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-pu9v=28**kb(llv%40(51zgncp$72svw5cbg@@o2k9ae2+cpo#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.14']
 
 
 # Application definition
@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'product.apps.ApiConfig',
+    'product.apps.ProductConfig',
+    'user.apps.UserConfig',
     'rest_framework',
 ]
 
@@ -78,8 +79,12 @@ WSGI_APPLICATION = 'restapi.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ecommerce',
+        'USER': 'dewidar',
+        'PASSWORD': '953751',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 

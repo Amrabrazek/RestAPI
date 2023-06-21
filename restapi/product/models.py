@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.hashers import make_password, check_password
-from user.models import Admin
+from user.models import User
 
 
 class Category (models.Model):
@@ -18,8 +18,8 @@ class Product(models.Model):
     price = models.IntegerField(null=False, blank=False)
     brand = models.CharField(max_length=50, null=False, blank=False)
     instock = models.IntegerField(null=False, blank=False,)
-    discountpercentage = models.DecimalField()
+    discountpercentage = models.DecimalField(decimal_places=4, max_digits=10)
     thumbnail = models.ImageField(upload_to='product_images/', null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products') 
-    owner = models.ForeignKey(Admin, on_delete=models.CASCADE, related_name='products') 
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='products') 
     
