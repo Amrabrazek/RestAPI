@@ -1,3 +1,16 @@
 from django.shortcuts import render
 
-# Create your views here.
+# Create Admin views here.
+
+
+
+
+
+
+
+
+
+
+
+
+# Create Buyer views here.
