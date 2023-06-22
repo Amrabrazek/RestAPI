@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-pu9v=28**kb(llv%40(51zgncp$72svw5cbg@@o2k9ae2+cpo#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.14']
+ALLOWED_HOSTS = ['192.168.1.14','localhost','127.0.0.1']
 
 
 # Application definition
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'product.apps.ProductConfig',
     'user.apps.UserConfig',
     'rest_framework',
+    'cart',
+    
 ]
 
 MIDDLEWARE = [
@@ -81,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'ecommerce',
-        'USER': 'dewidar',
-        'PASSWORD': '953751',
+        'USER': 'postgres',
+        'PASSWORD': '12345',
         'HOST': 'localhost',
         'PORT': '5432'
     }

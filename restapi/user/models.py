@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser
 
 class User(AbstractBaseUser):
     
+    USERNAME_FIELD = 'username'
 
     TYPE_CHOICES = [
         ('admin', 'Admin'),
