@@ -9,7 +9,7 @@ from .models import Cart
 from user.models import User
 from product.models import Product
 from .serializers import  CartSerializer
-
+from django.core.mail import send_mail
 # from rest_framework.permissions import IsAuthenticated
 # @permission_classes([IsAuthenticated])
 
@@ -94,12 +94,22 @@ def get_cart_api(request,user_id,product_id=None):
                 product = get_object_or_404(Product, id=product_id)
                 cart_item = get_object_or_404(Cart, user=user, product=product)
                 cart_item.delete()
+                send_cart_deleted_email(user)
             else:
                 cart_items = Cart.objects.filter(user=user)
                 cart_items.delete()
+                send_cart_deleted_email(user)
             http_status = status.HTTP_204_NO_CONTENT
                 
     except Exception as e:
         print(f'exception in get_cart_api => {e}')
         http_status = status.HTTP_500_INTERNAL_SERVER_ERROR
     return Response(data=data, status=http_status)
+
+
+def send_cart_deleted_email(user):
+    subject = 'Cart Deleted'
+    message = 'Your cart has been deleted.'
+    recipient_list = [user.email]
+
+    send_mail(subject, message, 'sender@example.com', recipient_list, fail_silently=False)
