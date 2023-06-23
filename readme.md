@@ -19,7 +19,7 @@
 
 - login endpoint using email and password
 
--signup endpoint ( first_name, last_name, email, password and password confirmation, image not
-mandatory), send confirmation mail upon registering.
+- signup endpoint ( first_name, last_name, email, password and password confirmation, image not
+  mandatory), send confirmation mail upon registering.
 
 - wish-list endpoint that get all products user liked
