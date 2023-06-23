@@ -9,6 +9,9 @@ class Category (models.Model):
     description = models. TextField(null=True, blank=True)
     image = models.ImageField(upload_to='category_images/', null=True, blank=True)
 
+    def __str__(self):
+        return self.name
+
 
 
 # User class model
@@ -22,4 +25,7 @@ class Product(models.Model):
     thumbnail = models.ImageField(upload_to='product_images/', null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products') 
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='products') 
+
+    def __str__(self):
+        return self.name
     
