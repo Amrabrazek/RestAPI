@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'rest_framework',
     'cart',
-    'rest_framework_simplejwt.token_blacklist'
+    'rest_framework_simplejwt.token_blacklist',
+    
     'whishlist',
     
 ]

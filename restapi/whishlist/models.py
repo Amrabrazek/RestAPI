@@ -16,4 +16,4 @@ class Whishlist(models.Model):
     
 
     def __str__(self):
-        return f"{self.product.name} liked by  {self.user.username}"
+        return f"{self.product.name} added to wishlist by  {self.user.username}"
