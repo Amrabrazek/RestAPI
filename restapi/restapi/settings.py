@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 import os
 
@@ -42,19 +43,14 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'rest_framework',
     'cart',
+    'rest_framework_simplejwt.token_blacklist'
     'whishlist',
     
 ]
 
-REST_FRAMEWORK = {
-'DEFAULT_PERMISSION_CLASSES': [
-    # 'rest_framework.permissions.AllowAny',
-    'rest_framework.permissions.IsAuthenticated', # new
-]
-}
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -126,6 +122,20 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'user.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=10),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

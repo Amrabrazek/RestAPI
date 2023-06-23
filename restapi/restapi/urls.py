@@ -24,4 +24,5 @@ urlpatterns = [
     path('api-auth',include('rest_framework.urls')),
     path('WishList/',include('whishlist.urls')),
     
+    path('api/',include('user.urls')),
 ]
