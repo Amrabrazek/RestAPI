@@ -13,3 +13,9 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = '__all__'
     
+
+class ProductSerializer_2(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = '__all__'
+    
