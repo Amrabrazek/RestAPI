@@ -16,7 +16,7 @@ from .serializers import WhishlistSerializer
 #based on user id get his wish list
 class wishList(generics.ListAPIView):
     serializer_class = WhishlistSerializer
-    # permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.IsAuthenticated,)
 
     def get_queryset(self):
         user_id = self.kwargs['user_id']
@@ -27,6 +27,6 @@ class wishList(generics.ListAPIView):
 
 
 class wishListDetail(generics.RetrieveUpdateDestroyAPIView):
-    # permission_classes = (permissions.IsAuthenticated,) # new
+    permission_classes = (permissions.IsAuthenticated,) # new
     queryset = Whishlist.objects.all()
     serializer_class = WhishlistSerializer

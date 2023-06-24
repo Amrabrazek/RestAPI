@@ -22,7 +22,7 @@ urlpatterns = [
     path('product/',include('product.urls')),
     path('cart/',include('cart.urls')),
     path('api-auth',include('rest_framework.urls')),
-    path('WishList/',include('whishlist.urls')),
+    path('wishList/',include('whishlist.urls')),
     
     path('api/',include('user.urls')),
 ]
