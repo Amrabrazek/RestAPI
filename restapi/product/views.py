@@ -1,17 +1,24 @@
 from rest_framework import generics,permissions
 from .models import Category, Product
-from .serializers import CategorySerializer,ProductSerializer
+from .serializers import CategorySerializer,ProductSerializer, ProductSerializer_2
+from .permissions import IsAuthorOrReadOnly
 
 # Create Admin views here.
 
+class ListProducts_author(generics.ListCreateAPIView):
+    permission_classes = ( IsAuthorOrReadOnly , permissions.IsAuthenticated,)
+
+    serializer_class = ProductSerializer_2
+    def get_queryset(self):
+        owner_id = self.kwargs['pk']
+        return Product.objects.filter(owner=owner_id)
 
 
-
-
-
-
-
-
+    
+class ListProductDetails(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = ( IsAuthorOrReadOnly, permissions.IsAuthenticated,)
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer_2
 
 
 
