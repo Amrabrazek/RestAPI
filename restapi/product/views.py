@@ -6,7 +6,7 @@ from .permissions import IsAuthorOrReadOnly
 # Create Admin views here.
 
 class ListProducts_author(generics.ListCreateAPIView):
-    permission_classes = (permissions.AllowAny ,)
+    permission_classes = ( IsAuthorOrReadOnly , permissions.IsAuthenticated,)
 
     serializer_class = ProductSerializer_2
     def get_queryset(self):
@@ -16,7 +16,7 @@ class ListProducts_author(generics.ListCreateAPIView):
 
     
 class ListProductDetails(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = ( IsAuthorOrReadOnly, )
+    permission_classes = ( IsAuthorOrReadOnly, permissions.IsAuthenticated,)
     queryset = Product.objects.all()
     serializer_class = ProductSerializer_2
 
